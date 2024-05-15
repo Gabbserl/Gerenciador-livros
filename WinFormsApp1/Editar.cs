@@ -13,18 +13,25 @@ using WinFormsApp1;
 
 namespace WinFormsApp1
 {
-    public partial class Form3 : Form
+    public partial class Editar : Form
     {
-        int idlivro;
-        public Form3()
+        int idAlterar;
+        public Editar(Livros livro)
         {
             InitializeComponent();
+            idAlterar = livro.id;
+            tituloTxt.Text = livro.Título;
+            generoTxt.Text = livro.Gênero;
+
         }
 
         private void botaoOk_Click(object sender, EventArgs e)
         {
-            Livros livro = new Livros() ;
-            livro.EditarLivro(int.Parse(textBox1.Text), textBox2.Text, textBox3.Text);
+            Livros livro = new Livros();
+            livro.id = idAlterar;
+            livro.Título = tituloTxt.Text;
+            livro.Gênero = generoTxt.Text;
+            livro.EditarLivro();
             this.Close();
         }
 

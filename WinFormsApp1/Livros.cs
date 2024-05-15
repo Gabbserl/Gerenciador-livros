@@ -10,18 +10,18 @@ using WinFormsApp1;
 
 namespace WinFormsApp1
 {
-    internal class Livros
+    public class Livros
     {
         public int id { get; set; }
-        public string Gênero { get; set; }
         public string Título { get; set; }
+        public string Gênero{ get; set; }
 
         public string conexao = "Data Source=localhost\\SQLEXPRESS01;Initial Catalog=Livros;Integrated Security=True; TrustServerCertificate=True";
         public List<Livros> listaLivros()
         {
             List<Livros> listaLivro = new List<Livros>();
             SqlConnection con = new SqlConnection(conexao);
-            string selecionar = "select id, genero, titulo from verlivros";
+            string selecionar = "select * from livros";
             con.Open();
             SqlCommand cmd = new SqlCommand(selecionar, con);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -43,22 +43,22 @@ namespace WinFormsApp1
         public void CriarLivro(Livros livro)
         {
             SqlConnection con = new SqlConnection(conexao);
-            SqlCommand cmd = new SqlCommand("criarlivro", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@id", livro.id));
+            SqlCommand cmd = new SqlCommand(null, con);
+            cmd.CommandText = ("INSERT INTO livros (titulo, genero) VALUES (@titulo, @genero)");
             cmd.Parameters.Add(new SqlParameter("@titulo", livro.Título));
             cmd.Parameters.Add(new SqlParameter("@genero", livro.Gênero));
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
         }
-        public void EditarLivro(int idlivro, string titulo, string genero)
+        public void EditarLivro()
         {
-            string conexao = "Data Source=localhost\\SQLEXPRESS01;Initial Catalog=Livros;Integrated Security=True; TrustServerCertificate=True";
             SqlConnection con = new SqlConnection(conexao);
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update livros set titulo = '" + titulo + "', genero = '" + genero + "' where id = '" + idlivro + "'";
+            SqlCommand cmd = new SqlCommand(null, con);
+            cmd.CommandText = ("update livros set titulo = @titulo, genero = @genero where id = @id");
+            cmd.Parameters.Add(new SqlParameter("@id", this.id));
+            cmd.Parameters.Add(new SqlParameter("@titulo", this.Título));
+            cmd.Parameters.Add(new SqlParameter("@genero", this.Gênero));
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
@@ -66,11 +66,10 @@ namespace WinFormsApp1
 
         public void ExcluirLivro(int idlivro)
         {
-            string conexao = "Data Source=localhost\\SQLEXPRESS01;Initial Catalog=Livros;Integrated Security=True; TrustServerCertificate=True";
             SqlConnection con = new SqlConnection(conexao);
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete livros where id = '" + idlivro + "'";
+            SqlCommand cmd = new SqlCommand(null, con);
+            cmd.CommandText = "delete livros where id = @id";
+            cmd.Parameters.Add(new SqlParameter("@id", idlivro));
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();

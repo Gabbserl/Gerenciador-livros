@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class Form2
+    partial class Adicionar
     {
         /// <summary>
         /// Required designer variable.
@@ -28,41 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            tituloTxt = new TextBox();
+            generoTxt = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
             botaoOk = new Button();
-            Cancelar = new Button();
+            botaoCancelar = new Button();
             SuspendLayout();
             // 
-            // textBox1
+            // tituloTxt
             // 
-            textBox1.Location = new Point(26, 92);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(273, 23);
-            textBox1.TabIndex = 0;
+            tituloTxt.Location = new Point(23, 35);
+            tituloTxt.Name = "tituloTxt";
+            tituloTxt.Size = new Size(273, 23);
+            tituloTxt.TabIndex = 1;
             // 
-            // textBox2
+            // generoTxt
             // 
-            textBox2.Location = new Point(26, 151);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(273, 23);
-            textBox2.TabIndex = 1;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(26, 214);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(271, 23);
-            textBox3.TabIndex = 2;
+            generoTxt.Location = new Point(23, 98);
+            generoTxt.Name = "generoTxt";
+            generoTxt.Size = new Size(271, 23);
+            generoTxt.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(26, 133);
+            label1.Location = new Point(23, 17);
             label1.Name = "label1";
             label1.Size = new Size(37, 15);
             label1.TabIndex = 3;
@@ -71,20 +62,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(28, 196);
+            label2.Location = new Point(25, 80);
             label2.Name = "label2";
             label2.Size = new Size(45, 15);
             label2.TabIndex = 4;
             label2.Text = "Gênero";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(26, 74);
-            label3.Name = "label3";
-            label3.Size = new Size(18, 15);
-            label3.TabIndex = 5;
-            label3.Text = "ID";
             // 
             // botaoOk
             // 
@@ -96,44 +78,39 @@
             botaoOk.UseVisualStyleBackColor = true;
             botaoOk.Click += botaoOk_Click;
             // 
-            // Cancelar
+            // botaoCancelar
             // 
-            Cancelar.Location = new Point(224, 402);
-            Cancelar.Name = "Cancelar";
-            Cancelar.Size = new Size(75, 23);
-            Cancelar.TabIndex = 7;
-            Cancelar.Text = "Cancelar";
-            Cancelar.UseVisualStyleBackColor = true;
-            Cancelar.Click += Cancelar_Click;
+            botaoCancelar.Location = new Point(224, 402);
+            botaoCancelar.Name = "botaoCancelar";
+            botaoCancelar.Size = new Size(75, 23);
+            botaoCancelar.TabIndex = 7;
+            botaoCancelar.Text = "Cancelar";
+            botaoCancelar.UseVisualStyleBackColor = true;
+            botaoCancelar.Click += Cancelar_Click;
             // 
-            // Form2
+            // Adicionar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(308, 450);
-            Controls.Add(Cancelar);
+            Controls.Add(botaoCancelar);
             Controls.Add(botaoOk);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Name = "Form2";
+            Controls.Add(generoTxt);
+            Controls.Add(tituloTxt);
+            Name = "Adicionar";
             Text = "Adicionar novo livro";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox tituloTxt;
+        private TextBox generoTxt;
         private Label label1;
         private Label label2;
-        private Label label3;
         private Button botaoOk;
-        private Button Cancelar;
+        private Button botaoCancelar;
     }
 }
